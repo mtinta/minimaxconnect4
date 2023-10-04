@@ -183,7 +183,7 @@ def dibujar_tablero(tablero):	##dibujar tablero con pygame
             if tablero[fila][col] == ficha_jugador:
                 pygame.draw.circle(screen, VERDE, (int(col * SQUARESIZE + SQUARESIZE / 2), height - int(fila * SQUARESIZE + SQUARESIZE / 2)), RADIUS) ##Se cambia al color del jugador, se usa height - para invertir el tablero
             elif tablero[fila][col] == ficha_IA: 
-                pygame.draw.circle(screen, AMARILLO, (int(col * SQUARESIZE + SQUARESIZE / 2), height - int(fila * SQUARESIZE + SQUARESIZE / 2)), RADIUS) ##Se cambia al color de IA
+                pygame.draw.circle(screen, ROJO, (int(col * SQUARESIZE + SQUARESIZE / 2), height - int(fila * SQUARESIZE + SQUARESIZE / 2)), RADIUS) ##Se cambia al color de IA
     pygame.display.update() ##actualiza el tablero
 
 tablero = crear_tablero()
@@ -195,7 +195,7 @@ pygame.init()
 NEGRO = (0, 0, 0)
 GRIS = (128, 128, 128)
 VERDE = (0, 128, 0)
-AMARILLO = (255, 255, 0)
+ROJO = (255, 0, 0)
 
 SQUARESIZE = 100 ##Tamaño de cuadricula (se mide por diametro)
 
@@ -209,8 +209,9 @@ RADIUS = int(SQUARESIZE / 2 - 5) ## El radio es squaresize/2
 screen = pygame.display.set_mode(size)
 dibujar_tablero(tablero)
 pygame.display.update()
-
 myfont = pygame.font.SysFont("monospace", 75) ##fuente para el texto de victoria
+
+
 
 turno = 0 ##turno 0 sera para el jugador, turno 1 para AI
 
@@ -262,7 +263,7 @@ while not juego_terminado:
             soltar_ficha(tablero, fila, columna, ficha_IA)	## se pone la ficha dle AI en la matriz
 
             if movimiento_ganador(tablero, ficha_IA):
-                etiqueta = myfont.render("¡Jugador 2 gana!", 1, AMARILLO) ##imprime en pygame 
+                etiqueta = myfont.render("¡Jugador 2 gana!", 1, ROJO) ##imprime en pygame 
                 screen.blit(etiqueta, (40, 10))								##imprime en pygame
                 juego_terminado = True									## el juego termina cambia a true para interrumpir el programa
 
